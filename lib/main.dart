@@ -44,20 +44,20 @@ class _HomeState extends State<Home> {
 
   getGame() {
     return Column(
-        children: game.getDados.asMap().entries.map((linhaEntry) {
-      final linhaIndex = linhaEntry.key;
-      final linha = linhaEntry.value;
+        children: game.getDados.asMap().entries.map((rowEntry) {
+      final rowIndex = rowEntry.key;
+      final row = rowEntry.value;
       return Row(
-        children: linha.asMap().entries.map((valorEntry) {
-          final colunaIndex = valorEntry.key;
+        children: row.asMap().entries.map((valorEntry) {
+          final colIndex = valorEntry.key;
           final valor = valorEntry.value;
           return OutlinedButton(
             onPressed: () {
               setState(() {
-                game.move(linhaIndex, colunaIndex);
+                game.move(rowIndex, colIndex);
               });
             },
-            child: Text(game.getDados[linhaIndex][colunaIndex]),
+            child: Text(game.getDados[rowIndex][colIndex]),
           );
         }).toList(),
       );
