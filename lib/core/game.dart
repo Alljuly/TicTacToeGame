@@ -1,5 +1,5 @@
 class Game {
-  var dados = [
+  List<List<String>> dados = [
     ["", "", ""],
     ["", "", ""],
     ["", "", ""],
@@ -11,20 +11,20 @@ class Game {
 
   String get getVez => vez;
 
-  void turn() {
-    if (vez == 'X') {
-      vez = 'O';
-    } else {
-      vez = "X";
-    }
-  }
-
   void move(int x, int y) {
     if (!isWinner() && dados[x][y] == "") {
       dados[x][y] = vez;
       if (!isWinner()) {
         turn();
       }
+    }
+  }
+
+  void turn() {
+    if (vez == 'X') {
+      vez = 'O';
+    } else {
+      vez = "X";
     }
   }
 
@@ -46,8 +46,8 @@ class Game {
         dados[0][0] == dados[1][1] &&
         dados[1][1] == dados[2][2]) {
       return true;
-    } else if (dados[2][2] != "" &&
-        dados[2][2] == dados[1][1] &&
+    } else if (dados[2][0] != "" &&
+        dados[2][0] == dados[1][1] &&
         dados[1][1] == dados[2][0]) {
       return true;
     }
